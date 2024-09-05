@@ -1,66 +1,36 @@
-## Foundry
+## OZTokenTest: An ERC20 Token Implementation
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Overview
 
-Foundry consists of:
+OZTokenTest is a Solidity smart contract that implements the ERC20 token standard using OpenZeppelin libraries. This project includes a custom burn functionality and comprehensive test cases using the Foundry framework.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## Features
 
-## Documentation
+- Standard ERC20 functionality (transfer, approve, transferFrom)
+- Custom burn function
+- Comprehensive test suite
 
-https://book.getfoundry.sh/
+## Contract Structure
 
-## Usage
+### OZTokenTest.sol
 
-### Build
+The main contract inherits from OpenZeppelin's ERC20 implementation and adds:
 
-```shell
-$ forge build
-```
+- Custom constructor for initial supply, name, and symbol
+- Burn function
 
-### Test
+### DeployOZTokenTest.sol
 
-```shell
-$ forge test
-```
+Deployment script that:
 
-### Format
+- Sets initial supply, name, and symbol
+- Deploys the OZTokenTest contract
 
-```shell
-$ forge fmt
-```
+## Burn Implementation
 
-### Gas Snapshots
+The burn function is implemented as follows:
 
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+```solidity
+function burn(address account, uint256 amount) public {
+    ERC20._burn(account, amount);
+}
