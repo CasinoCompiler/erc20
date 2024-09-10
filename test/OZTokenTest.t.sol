@@ -37,7 +37,7 @@ contract TestOZTokenTest is Test {
 
     function testInitialMinting() public view {
         uint256 expectedBalance = deployer.INITIAL_SUPPLY();
-
+        console.log(address(deployer));
         assertEq(ozTokenTest.balanceOf(deployerAddress), expectedBalance, "Deployer should have the initial supply");
     }
 
