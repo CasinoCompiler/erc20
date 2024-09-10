@@ -1,11 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.18;
 
-/** 
+/**
  * @notice This is just manually creating some ERC20 functionality.
  * Ignore contract
  */
-
 contract ManualToken {
     mapping(address => uint256) private s_addressToBalance;
 

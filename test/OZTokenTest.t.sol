@@ -62,14 +62,14 @@ contract TestOZTokenTest is Test {
     /*//////////////////////////////////////////////////////////////
                                 TRANSFER
     //////////////////////////////////////////////////////////////*/
-    modifier transferTokensToBob {
+    modifier transferTokensToBob() {
         vm.startPrank(address(1));
         ozTokenTest.transfer(bob, STARTING_BALANCE);
         vm.stopPrank();
         _;
     }
 
-    modifier transferTokensToAlice {
+    modifier transferTokensToAlice() {
         vm.startPrank(address(1));
         ozTokenTest.transfer(alice, STARTING_BALANCE);
         vm.stopPrank();
@@ -95,7 +95,7 @@ contract TestOZTokenTest is Test {
         assertEq(aliceStartingBalance, (aliceEndingBalance - amountToTransfer));
     }
 
-    function testTransferFrom() public transferTokensToAlice{
+    function testTransferFrom() public transferTokensToAlice {
         // Arrange
         uint256 allowanceForBobToSpend = 10;
         uint256 bobStartingBalance = ozTokenTest.balanceOf(bob);
